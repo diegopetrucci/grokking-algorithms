@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios'>
+    <pages>
+        <page name='Recursive sum of array'/>
+        <page name='Rec array elements count '/>
+        <page name='Rec max number in list'/>
+        <page name='Rec binary search'/>
+    </pages>
+</playground>
