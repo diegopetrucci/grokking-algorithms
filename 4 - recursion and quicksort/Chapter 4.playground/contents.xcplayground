@@ -5,5 +5,6 @@
         <page name='Rec array elements count '/>
         <page name='Rec max number in list'/>
         <page name='Rec binary search'/>
+        <page name='Quick sort'/>
     </pages>
 </playground>
