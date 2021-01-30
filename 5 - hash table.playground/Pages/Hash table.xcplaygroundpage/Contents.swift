@@ -6,7 +6,6 @@ final class Node<V> {
     var next: Node?
     
     init(value: V, key: String, next: Node? = nil) {
-//    init(value: V, key: String) {
         self.value = value
         self.key = key
         self.next = next
@@ -66,22 +65,24 @@ final class HashTable<V> {
         }
     }
     
-    // Deletion does not work ¯\_(ツ)_/¯
     func delete(key: String) {
         let hashValue = hash(key: key)
         
         // Iterate through the list until the the value is found
         var node = buckets[hashValue]
-        while node?.next != nil && node?.key != key {
+        
+        if node?.key == key { buckets[hashValue] = nil }
+        
+        while node?.next != nil && node?.next?.key != key {
             node = node?.next
         }
         
-        print("currentNode is \(node?.key)")
-        print("next is \(node?.next?.key)")
-        if node?.key == key {
+        print("currentNode is \(String(describing: node?.key))")
+        print("next is \(String(describing: node?.next?.key))")
+        if node?.next?.key == key {
             print("removing key \(key)…")
-            print("with next key of \(node?.next?.key)")
-            node = node?.next
+            print("with next key of \(String(describing: node?.next?.key))")
+            node?.next = node?.next?.next
             dump(buckets[hashValue])
         }
     }
@@ -100,6 +101,7 @@ let table = HashTable<Int>(size: 1)
 table.store(value: 5, key: "Five")
 table.retrieve(key: "Five")
 table.delete(key: "Five")
+table.retrieve(key: "Five")
 table.store(value: 7, key: "Seven")
 table.store(value: 2, key: "Two")
 table.buckets
